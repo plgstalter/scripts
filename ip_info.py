@@ -4,7 +4,7 @@ from time import sleep
 
 def ip_handler(dr, ip: str, i):
     dr.execute_script(f"window.open('about:blank', 'tab{i}');")
-    dr.switch_to.window(f"tab{i}")
+dr.switch_to.window(f"tab{i}")
     dr.get('https://infotracer.com/reverse-ip-lookup/')
     sleep(2)
     dr.find_element_by_xpath('//*[@id="tab-01"]/div/form/div/div[1]/input').send_keys(ip)
