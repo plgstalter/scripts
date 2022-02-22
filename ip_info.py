@@ -6,9 +6,8 @@ def ip_handler(dr, ip: str, i):
     tab_name = f"tab{i}"
     dr.execute_script(f"window.open('about:blank', '{tab_name}');")
     dr.switch_to_window(tab_name)
-    sleep(1)
     dr.get('https://infotracer.com/reverse-ip-lookup/')
-    sleep(1)
+    sleep(2)
     dr.find_element_by_xpath('//*[@id="tab-01"]/div/form/div/div[1]/input').send_keys(ip)
     sleep(0.1)
     cookie_button_1 = dr.find_elements_by_xpath('//*[@id="onetrust-accept-btn-handler"]')
@@ -28,7 +27,6 @@ def main(file_name: str):
     for line in reverse_ip_website.readlines():
         ip_handler(dr, line, i)
         i += 1
-        sleep(5)
     reverse_ip_website.close()
     dr.close()
 
