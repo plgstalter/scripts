@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+cat ~/.scripts/base.tex >> "$1.tex" && vim "$1.tex"

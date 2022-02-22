@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+open $(grep -lr "$*" source/* | tr 'source' 'output' | sed 's/.md/.pdf/')

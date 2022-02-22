@@ -1,0 +1,13 @@
+if [ -f `date "+%d_%m"`.md ]; then
+	echo "le fichier existe déjà"
+else
+	echo "---" 		 > `date "+%d_%m"`.md 
+	cat info.txt 		>> `date "+%d_%m"`.md
+	x=`date "+%Y_%m_%d"`
+	y=`cat language.txt`
+	echo "date: "`python ../nice_date.py $x $y`  >> `date "+%d_%m"`.md
+	echo "header-includes:" >> `date "+%d_%m"`.md
+	cat ../header-includes.txt >> `date "+%d_%m"`.md
+	echo "---" 		>> `date "+%d_%m"`.md
+fi
+vim `date "+%d_%m"`.md
