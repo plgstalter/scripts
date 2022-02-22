@@ -3,9 +3,8 @@ from sys import argv
 from time import sleep
 
 def ip_handler(dr, ip: str, i):
-    tab_name = f"tab{i}"
-    dr.execute_script(f"window.open('about:blank', '{tab_name}');")
-    dr.switch_to_window(tab_name)
+    dr.execute_script(f"window.open('about:blank', 'tab{i}');")
+    dr.switch_to.window(f"tab{i}")
     dr.get('https://infotracer.com/reverse-ip-lookup/')
     sleep(2)
     dr.find_element_by_xpath('//*[@id="tab-01"]/div/form/div/div[1]/input').send_keys(ip)
@@ -30,6 +29,5 @@ def main(file_name: str):
     reverse_ip_website.close()
     dr.close()
 
-if  __name__=="__main__":
-    if  len(argv) > 1:
+if  __name__=="__main__" and len(argv) > 1:
         main(argv[1])
